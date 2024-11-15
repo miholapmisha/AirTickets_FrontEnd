@@ -1,8 +1,8 @@
 const httpStatusInstance = require('http-status-codes');
 const path = require('path');
 const fsInstance = require('fs');
-const {PATHNAME_TO_FILEPATH, NOT_FOUND_FILEPATH} = require('./routes')
-const {STATIC_CONTENT_FOLDER, IMAGE_FOLDER} = require('./constants')
+const { PATHNAME_TO_FILEPATH, NOT_FOUND_FILEPATH } = require('./routes')
+const { STATIC_CONTENT_FOLDER, IMAGE_FOLDER } = require('./constants')
 const AVAILABLE_IMAGE_EXTENSIONS = require('./image-extensions')
 
 const handleRequest = (req, res) => {
@@ -28,7 +28,10 @@ const handleHTMLRequest = (req, res) => {
     res.writeHead(httpStatusInstance.StatusCodes.OK, {
         "Content-Type": "text/html"
     });
-    const responseFilepath = PATHNAME_TO_FILEPATH.get(req.url)
+    
+    const basePath = new URL(req.url, `http://${req.headers.host}`).pathname;
+    const responseFilepath = PATHNAME_TO_FILEPATH.get(basePath);
+
     if (responseFilepath) {
         readFile(responseFilepath, res);
     } else {

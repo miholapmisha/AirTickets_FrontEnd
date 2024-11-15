@@ -1,3 +1,28 @@
+.dropdown-list {
+  border-radius: 8px;
+  scrollbar-width: none;
+  top: 80px;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+  width: 300px;
+}
+
+.dropdown-list::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+.dropdown-item:hover {
+  background-color: #eee;
+}
+ 
  .u-section-1 {
   background-image: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("photo-1436491865332-7a61a109cc05.jpeg");
 }
