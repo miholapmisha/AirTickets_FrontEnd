@@ -1,3 +1,58 @@
+.input-wrapper {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+      transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+      transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+
+#registration-error-holder {
+  display: none;
+  color: #fff;
+  background-color: #e74c3c;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#error-holder-show {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 .u-section-1 .u-sheet-1 {
   min-height: 100vh;
 }

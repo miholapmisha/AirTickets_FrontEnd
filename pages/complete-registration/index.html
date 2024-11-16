@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>register_page</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="register_page.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js"></script>
@@ -79,55 +79,38 @@
 	C23.587,10.539,21.397,9.5,18,9.5c-9.563,0-10,8-10,8v4.995c-0.526,0.475-1,1.154-1,1.914v3.455c0,0.911,0.479,1.711,1.194,2.174
 	c0.863,3.758,3.76,6.463,3.76,6.463v3.157c0,1.151-0.629,2.211-1.64,2.762L3.61,46.622C1.385,47.836,0,50.168,0,52.703V55.5h14
 	v-3.239C14,49.326,15.603,46.625,18.18,45.22z"></path></svg></span>
-        <div class="u-form u-login-control u-form-1">
-            <form id="registration-form" class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form"
-                  source="custom" name="form" style="padding: 10px;" method="post">
-                <div class="u-form-group u-form-name">
-                    <label for="username-a30d" class="u-label">Електронна пошта *</label>
-                    <input id="email-input" type="text" placeholder="Введіть адресу ел. пошти" name="username"
-                           class="u-input u-input-rectangle u-none u-input-1" required="">
-                </div>
-                <div class="u-form-group u-form-password">
-                    <label for="password-input" class="u-label">Пароль*</label>
-                    <input id="password-input" type="password" placeholder="Введіть пароль" name="password"
-                           class="u-input u-input-rectangle u-none u-input-2" required="">
-                </div>
-                <div class="u-form-group u-form-password">
-                    <label for="confirm-password-input" class="u-label">Підтрердження паролю*</label>
-                    <input type="password" placeholder="Введіть підтрердження" id="confirm-password-input" name="password"
-                           class="u-input u-input-rectangle u-none u-input-2" required="">
-                </div>
-                <!-- <div class="u-form-checkbox u-form-group">
-                    <input type="checkbox" id="checkbox-a30d" name="remember" value="On" class="u-field-input">
-                    <label for="checkbox-a30d" class="u-block-2da7-32 u-field-label" style="">Запамʼятати мене</label>
-                </div> -->
-                <div class="u-align-left u-form-group u-form-submit">
-                    <div class="input-wrapper">
-                        <input type="submit" value="Зареєструватись" class="u-btn u-button-style u-btn-1">
-                        <div class="loader"></div>
-                    </div>
-                </div>
-                <input type="hidden" value="" name="recaptchaResponse">
-            </form>
-            <div id="registration-error-holder"></div>
-        </div>
-        <a href="/login"
-           class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-login-control u-login-create-account u-none u-text-palette-1-base u-btn-2">Уже
-            зареєстровані?</a>
+    <div class="u-form u-login-control u-form-1">
+        <form id="complete-registration-form" class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form"
+              source="custom" name="form" style="padding: 10px;" method="post">
+            <div class="u-form-group u-form-name">
+                <label for="name-input" class="u-label">Ім’я *</label>
+                <input id="name-input" type="text" placeholder="Введіть ваше ім’я" name="name"
+                       class="u-input u-input-rectangle u-none u-input-1" required="">
+            </div>
+            <div class="u-form-group u-form-name">
+                <label for="surname-input" class="u-label">Прізвище *</label>
+                <input id="surname-input" type="text" placeholder="Введіть ваше прізвище" name="surname"
+                       class="u-input u-input-rectangle u-none u-input-1" required="">
+            </div>
+            <div class="u-form-group u-form-phone">
+                <label for="phone-input" class="u-label">Телефон *</label>
+                <input id="phone-input" type="tel" placeholder="Введіть номер телефону" name="phone"
+                       class="u-input u-input-rectangle u-none u-input-1" required="">
+            </div>
+            <div class="u-form-group u-form-address">
+                <label for="address-input" class="u-label">Адреса *</label>
+                <input id="address-input" type="text" placeholder="Введіть вашу адресу" name="address"
+                       class="u-input u-input-rectangle u-none u-input-1" required="">
+            </div>
+            <div class="u-align-left u-form-group u-form-submit">
+                <input type="submit" value="Зареєструватись" class="u-btn u-button-style u-btn-1">
+            </div>
+        </form>
+        <div id="registration-error-holder"></div>
+    </div>
+    
     </div>
 </section>
-
-<footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-ee4e">
-    <div class="u-clearfix u-sheet u-sheet-1"></div>
-</footer>
-<section class="u-backlink u-clearfix u-grey-80">
-    <p class="u-text">
-        <span>This site was created with the </span>
-        <a class="u-link" href="https://nicepage.com/" target="_blank" rel="nofollow">
-            <span>Nicepage</span>
-        </a>
-    </p>
-</section>
-<script src="registration.js"></script>
+<script src="complete-registration.js"></script>
 </body>
 </html>
