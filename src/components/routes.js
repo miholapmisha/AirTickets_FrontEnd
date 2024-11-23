@@ -1,15 +1,16 @@
 const path = require('path');
-const {PAGE_FOLDER} = require('./constants');
+const { PAGE_FOLDER } = require('./constants');
 
 const PATHNAME_TO_FILEPATH = new Map([
     ['/', path.join(PAGE_FOLDER, '/homepage/index.html')],
     ['/login', path.join(PAGE_FOLDER, '/login-page/index.html')],
     ['/register', path.join(PAGE_FOLDER, '/register-page/index.html')],
-    ['/tickets', path.join(PAGE_FOLDER, '/ticket-list/index.html')],
+    ['/flights', path.join(PAGE_FOLDER, '/flights-list/index.html')],
     ['/confirmation', path.join(PAGE_FOLDER, '/email-confirmation/index.html')],
     ['/complete-registration', path.join(PAGE_FOLDER, '/complete-registration/index.html')],
-    ['/plane-tracking', path.join(PAGE_FOLDER, '/tracking-page/index.html')]
-
+    ['/plane-tracking', path.join(PAGE_FOLDER, '/tracking-page/index.html')],
+    ['/ticket', path.join(PAGE_FOLDER, '/ticket-page/index.html')],
+    ['/profile', path.join(PAGE_FOLDER, '/user-page/index.html')]
 ]);
 const NOT_FOUND_FILEPATH = path.join(PAGE_FOLDER, '/404/index.html');
 

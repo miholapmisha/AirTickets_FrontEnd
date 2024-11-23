@@ -1,4 +1,3 @@
-const BASE_ENDPOINT = 'http://localhost:8000';
 
 $(document).ready(() => {
     const form = $('#login-form');
@@ -13,7 +12,7 @@ $(document).ready(() => {
         errorHolder.empty();
         const email = emailInput.val().trim();
         const password = passwordInput.val().trim();
-    
+
         submitButton.prop('disabled', true);
         loader.show();
 
@@ -28,7 +27,7 @@ $(document).ready(() => {
             success: (response) => {
                 if (response.token) {
                     localStorage.setItem('authToken', response.token);
-                    window.location.href = `${window.location.origin}/`;
+                    window.location.href = `${window.location.origin}/profile`;
                 } else {
                     errorHolder.text('Помилка виникла під час входу, спробуйте пізніше.');
                 }

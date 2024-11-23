@@ -1,5 +1,3 @@
-const BASE_ENDPOINT = 'http://localhost:8000';
-
 const urlParams = new URLSearchParams(window.location.search);
 const email = urlParams.get('email') || '';
 

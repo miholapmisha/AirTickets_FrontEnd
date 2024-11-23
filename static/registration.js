@@ -1,5 +1,3 @@
-const BASE_ENDPOINT = 'http://localhost:8000'
-
 $(document).ready(() => {
     const form = $('#registration-form');
     const emailInput = $('#email-input');

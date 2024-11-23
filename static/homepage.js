@@ -1,10 +1,17 @@
-
-const BASE_API = 'http://localhost:8000'
-
 $(document).ready(() => {
-    const BASE_URL = `${BASE_API}/flights/airports`;
+    const BASE_URL = `${BASE_ENDPOINT}/flights/airports`;
+    let timeout;
 
-    function createDropdown(inputElement, data) {
+    const token = localStorage.getItem('authToken');
+    const profileHref = $('#profile-href');
+
+    if (token) {
+        profileHref.attr('href', '/profile');
+    } else {
+        profileHref.attr('href', '/login');
+    }
+
+    const createDropdown = (inputElement, data) => {
         $('.dropdown-list').remove();
 
         const dropdown = $('<div class="dropdown-list"></div>');
@@ -22,7 +29,7 @@ $(document).ready(() => {
         inputElement.after(dropdown);
     }
 
-    function fetchAirports(query, inputElement) {
+    const fetchAirports = (query, inputElement) => {
         if (!query) {
             $('.dropdown-list').remove();
             return;
@@ -31,7 +38,8 @@ $(document).ready(() => {
         $.ajax({
             url: BASE_URL,
             type: 'POST',
-            data: { query: query },
+            contentType: 'application/json',
+            data: JSON.stringify({ query: query }),
             success: function (response) {
                 createDropdown(inputElement, response.data);
             },
@@ -41,14 +49,20 @@ $(document).ready(() => {
         });
     }
 
-    $('#text-08e1').on('input', function () {
-        const query = $(this).val();
-        fetchAirports(query, $(this));
+    const handleInputChange = (inputElement) => {
+        const query = inputElement.val();
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            fetchAirports(query, inputElement);
+        }, 600);
+    }
+
+    $('#departure-airport').on('input', function () {
+        handleInputChange($(this));
     });
 
-    $('#text-090d').on('input', function () {
-        const query = $(this).val();
-        fetchAirports(query, $(this));
+    $('#arrival-airport').on('input', function () {
+        handleInputChange($(this));
     });
 
     $(document).on('click', function (event) {
@@ -60,48 +74,16 @@ $(document).ready(() => {
     $('#tickets-form').on('submit', (event) => {
         event.preventDefault();
 
-        const departureId = $('#text-08e1').attr('data-id');
-        const arrivalId = $('#text-090d').attr('data-id');
-        const date = $('#date-241d').val();
+        const departureId = $('#departure-airport').attr('data-id');
+        const arrivalId = $('#arrival-airport').attr('data-id');
+        const date = $('#travel-date').val();
+        const arrivalName = $('#arrival-airport').val();
+        const departureName = $('#departure-airport').val();
+
         if (departureId && arrivalId && departureId !== '' && arrivalId !== '') {
-            window.location.href = window.location.origin + `/tickets?from=${departureId}&to=${arrivalId}&date=${date}`;
+            window.location.href = window.location.origin + `/flights?from=${departureId}&to=${arrivalId}&date=${date}&fromName=${departureName}&toName=${arrivalName}`;
         } else {
-            window.location.href = window.location.origin + `/tickets`;
+            window.location.href = window.location.origin + `/flights`;
         }
-    })
+    });
 });
-
-// $(document).ready(function () {
-//     $('#tickets-form').on('submit', (event) => {
-//         event.preventDefault();
-
-//         const departure = $('#text-08e1').val();
-//         const arrival = $('#text-090d').val();
-
-//         const BASE_URL = `${BASE_API}/flights/airports`;
-
-//         $.ajax({
-//             url: BASE_URL,
-//             type: 'GET',
-//             data: { query: departure },
-//             success: (departureData) => {
-//                 console.log('Departure airport data:', departureData);
-
-//                 $.ajax({
-//                     url: BASE_URL,
-//                     type: 'GET',
-//                     data: { query: arrival },
-//                     success: function (arrivalData) {
-//                         console.log('Arrival airport data:', arrivalData)
-//                     },
-//                     error: function (error) {
-//                         console.log('Error fetching arrival airport data:', error);
-//                     }
-//                 });
-//             },
-//             error: (error) => {
-//                 console.log('Error fetching departure airport data:', error);
-//             }
-//         });
-//     });
-// });

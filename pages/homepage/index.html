@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="index.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js"></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js"></script>
     <meta name="generator" content="Nicepage 6.21.1, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -42,7 +42,7 @@
            data-animation-name="swing" data-animation-duration="10000" data-animation-delay="0"
            data-animation-direction="">
             <img src="2641603.png" class="u-logo-image u-logo-image-1">
-        </a><a href="/login" style="cursor: pointer" class="u-icon u-text-palette-1-base u-icon-1"><svg class="u-svg-link"
+        </a><a id="profile-href" href="/login" style="cursor: pointer" class="u-icon u-text-palette-1-base u-icon-1"><svg class="u-svg-link"
                                                                      preserveAspectRatio="xMidYMin slice"
                                                                      viewBox="0 0 55 55" style=""><use
             xlink:href="#svg-c987"></use></svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px"
@@ -77,18 +77,18 @@
                   class="u-clearfix u-form-horizontal u-form-spacing-10 u-inner-form" source="email" name="form"
                   style="padding: 32px;">
                 <div class="u-form-group u-label-none u-form-group-1">
-                    <label for="text-08e1" class="u-label">Поле ввода</label>
-                    <input type="text" id="text-08e1" name="text-1"
+                    <label for="departure-airport" class="u-label">Поле ввода</label>
+                    <input type="text" id="departure-airport" name="text-1"
                            class="u-grey-5 u-input u-input-rectangle u-radius u-input-1" placeholder="Виліт">
                 </div>
                 <div class="u-form-group u-label-none u-form-group-2">
-                    <label for="text-090d" class="u-label">Поле ввода</label>
-                    <input type="text" placeholder="Прибуття" id="text-090d" name="text"
+                    <label for="arrival-airport" class="u-label">Поле ввода</label>
+                    <input type="text" placeholder="Прибуття" id="arrival-airport" name="text"
                            class="u-grey-5 u-input u-input-rectangle u-radius u-input-2">
                 </div>
                 <div class="u-form-date u-form-group u-label-none u-form-group-3">
-                    <label for="date-241d" class="u-label">Дата</label>
-                    <input type="text" placeholder="ММ/ДД/РРРР" id="date-241d" name="date"
+                    <label for="travel-date" class="u-label">Дата</label>
+                    <input type="text" placeholder="ММ/ДД/РРРР" id="travel-date" name="date"
                            class="u-grey-5 u-input u-input-rectangle u-radius u-input-3" data-date-format="mm/dd/yyyy">
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-label-none">
@@ -379,6 +379,7 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
              xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path
                 d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
     </span>
+<script src="constant.js"></script>
 <script src="homepage.js"></script>
 </body>
 </html>
