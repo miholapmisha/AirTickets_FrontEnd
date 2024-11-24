@@ -4,6 +4,10 @@
  * Copyright 2014-2021 Froala Labs
  */
 
+header {
+    background: rgba(0, 141, 166, 0.56);
+}
+
 .fr-clearfix::after {
   clear: both;
   display: block;
@@ -18434,6 +18438,8 @@ p {
 }
 .u-font-arial.u-custom-font {
   font-family: Arial, sans-serif !important;
+    color: white;
+
 }
 .u-font-courier-new.u-custom-font {
   font-family: 'Courier New', monospace !important;

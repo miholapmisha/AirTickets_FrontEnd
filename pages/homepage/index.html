@@ -12,13 +12,25 @@
     <link rel="stylesheet" href="index.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js"></script>
     <script class="u-script" type="text/javascript" src="nicepage.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <meta name="generator" content="Nicepage 6.21.1, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-
+    <style>
+        .u-form-send-success {
+            display: none;
+            color: green;
+            margin-top: 20px;
+        }
+        .u-form-send-error {
+            display: none;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
 
     <script type="application/ld+json">{
         "@context": "http://schema.org",
@@ -36,7 +48,35 @@
 <body data-home-page="https://airwaystickets.nicepage.io/main_page.html?version=bb5e3d44-bff9-f6d2-dce1-75181351e725"
       data-home-page-title="main_page" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode"
       data-lang="ru">
-
+<header class="u-clearfix u-header u-sticky u-sticky-88c1 u-header" id="sec-cad0">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <a href="/" class="infinite u-image u-logo u-image-1" data-image-width="128" data-image-height="128"
+           data-animation-name="swing" data-animation-duration="10000" data-animation-delay="0"
+           data-animation-direction="">
+            <img src="2641603.png" class="u-logo-image u-logo-image-1">
+        </a><a id="profile-href" href="/login" style="cursor: pointer" class="u-icon u-text-palette-1-base u-icon-1"><svg class="u-svg-link"
+                                                                     preserveAspectRatio="xMidYMin slice"
+                                                                     viewBox="0 0 55 55" style=""><use
+            xlink:href="#svg-c987"></use></svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px"
+                                                    id="svg-c987" style="enable-background:new 0 0 55 55;"><path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
+	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
+	c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
+	c0.724,0.125,1.456,0.225,2.197,0.292c0.09,0.008,0.18,0.013,0.271,0.021C25.998,54.961,26.744,55,27.5,55
+	c0.749,0,1.488-0.039,2.222-0.098c0.093-0.008,0.186-0.013,0.279-0.021c0.735-0.067,1.461-0.164,2.178-0.287
+	c0.062-0.011,0.125-0.022,0.187-0.034c2.297-0.412,4.495-1.109,6.557-2.055c0.076-0.035,0.153-0.068,0.229-0.104
+	c0.617-0.29,1.22-0.603,1.811-0.936c0.147-0.083,0.293-0.167,0.439-0.253c0.538-0.317,1.067-0.648,1.581-1
+	c0.185-0.126,0.366-0.259,0.549-0.391c0.439-0.316,0.87-0.642,1.289-0.983c0.093-0.075,0.193-0.14,0.284-0.217l0.915-0.764
+	l-0.027-0.023C51.523,42.802,55,35.55,55,27.5z M2,27.5C2,13.439,13.439,2,27.5,2S53,13.439,53,27.5
+	c0,7.577-3.325,14.389-8.589,19.063c-0.294-0.203-0.59-0.385-0.893-0.537l-8.467-4.233c-0.76-0.38-1.232-1.144-1.232-1.993v-2.957
+	c0.196-0.242,0.403-0.516,0.617-0.817c1.096-1.548,1.975-3.27,2.616-5.123c1.267-0.602,2.085-1.864,2.085-3.289v-3.545
+	c0-0.867-0.318-1.708-0.887-2.369v-4.667c0.052-0.52,0.236-3.448-1.883-5.864C34.524,9.065,31.541,8,27.5,8
+	s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
+	c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
+	c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"></path></svg></a>
+        <a href="/"> <h4 style="color: #FFFFFF" class="u-custom-font u-font-oswald u-text u-text-default u-text-1">RIGHTNOWTICKETS</h4></a>
+    </div>
+</header>
 <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-8bb6">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
                                                     data-custom-animation="{&quot;animation&quot;:{&quot;XXL&quot;:{&quot;steps&quot;:[],&quot;hidden&quot;:false,&quot;start&quot;:{&quot;at&quot;:&quot;bottom&quot;,&quot;off&quot;:0},&quot;end&quot;:{&quot;at&quot;:&quot;top&quot;,&quot;off&quot;:0}},&quot;XL&quot;:{&quot;steps&quot;:[{&quot;dist&quot;:0.5,&quot;skip&quot;:0,&quot;blur&quot;:10,&quot;sticky&quot;:false,&quot;fixed&quot;:true,&quot;mx&quot;:0,&quot;my&quot;:0,&quot;op&quot;:0,&quot;rot&quot;:0,&quot;sx&quot;:3,&quot;sy&quot;:3,&quot;bgy&quot;:0}],&quot;hidden&quot;:false,&quot;start&quot;:{&quot;at&quot;:&quot;middle&quot;,&quot;off&quot;:0},&quot;end&quot;:{&quot;at&quot;:&quot;top&quot;,&quot;off&quot;:0}},&quot;LG&quot;:{&quot;steps&quot;:[],&quot;hidden&quot;:false,&quot;start&quot;:{&quot;at&quot;:&quot;bottom&quot;,&quot;off&quot;:0},&quot;end&quot;:{&quot;at&quot;:&quot;top&quot;,&quot;off&quot;:0}},&quot;MD&quot;:{&quot;steps&quot;:[],&quot;hidden&quot;:false,&quot;start&quot;:{&quot;at&quot;:&quot;bottom&quot;,&quot;off&quot;:0},&quot;end&quot;:{&quot;at&quot;:&quot;top&quot;,&quot;off&quot;:0}},&quot;SM&quot;:{&quot;steps&quot;:[],&quot;hidden&quot;:true,&quot;start&quot;:{&quot;at&quot;:&quot;bottom&quot;,&quot;off&quot;:0},&quot;end&quot;:{&quot;at&quot;:&quot;top&quot;,&quot;off&quot;:0}},&quot;XS&quot;:{&quot;steps&quot;:[],&quot;hidden&quot;:true,&quot;start&quot;:{&quot;at&quot;:&quot;bottom&quot;,&quot;off&quot;:0},&quot;end&quot;:{&quot;at&quot;:&quot;top&quot;,&quot;off&quot;:0}}},&quot;container&quot;:&quot;&quot;}"><img
@@ -276,52 +316,102 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
                         <div class="u-container-layout u-valign-middle u-container-layout-6">
                             <h2 class="u-align-center u-text u-text-9">Звʼяжіться з нами </h2>
                             <div class="custom-expanded u-form u-form-1">
-                                <form action="https://forms.nicepagesrv.com/v2/form/process"
-                                      class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form"
-                                      style="padding: 0px;" source="email" name="form">
+                                <form id="contact-form" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" style="padding: 0px;">
                                     <div class="u-form-email u-form-group u-form-partition-factor-2 u-form-group-1">
                                         <label for="email-b04a" class="u-form-control-hidden u-label">Email</label>
-                                        <input type="email" placeholder="Ел. пошта" id="email-b04a" name="email"
-                                               class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-1"
-                                               required="" wfd-id="id591">
+                                        <input type="email" placeholder="Ел. пошта" id="email-b04a" name="email" class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-1" required>
                                     </div>
                                     <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-2">
                                         <label for="name-b04a" class="u-form-control-hidden u-label">Name</label>
-                                        <input type="text" placeholder="Імʼя" id="name-b04a" name="name"
-                                               class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-2"
-                                               required="" wfd-id="id592">
+                                        <input type="text" placeholder="Імʼя" id="name-b04a" name="name" class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-2" required>
                                     </div>
                                     <div class="u-form-group u-form-phone u-form-group-3">
                                         <label for="phone-6f45" class="u-form-control-hidden u-label">Phone</label>
-                                        <input type="tel"
-                                               pattern="\+?\d{0,2}[\s\(\-]?([0-9]{3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})"
-                                               placeholder="Номер телефону" id="phone-6f45" name="phone"
-                                               class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-3"
-                                               required="" wfd-id="id594">
+                                        <input type="tel" pattern="\+?\d{0,2}[\s\(\-]?([0-9]{3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" placeholder="Номер телефону" id="phone-6f45" name="phone" class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-3" required>
                                     </div>
                                     <div class="u-form-group u-form-message u-form-group-4">
                                         <label for="message-b04a" class="u-form-control-hidden u-label">Message</label>
-                                        <textarea placeholder="Опис питання" rows="4" cols="50" id="message-b04a"
-                                                  name="message"
-                                                  class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-4"
-                                                  required=""></textarea>
+                                        <textarea placeholder="Опис питання" rows="4" cols="50" id="message-b04a" name="message" class="u-border-none u-grey-70 u-input u-input-rectangle u-radius u-input-4" required></textarea>
                                     </div>
                                     <div class="u-align-left u-form-group u-form-submit u-form-group-5">
-                                        <a href="#"
-                                           class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-2-light-1 u-radius u-btn-2">Надіслати </a>
-                                        <input type="submit" value="submit" class="u-form-control-hidden"
-                                               wfd-id="id595">
+                                        <button type="button" id="sendButton" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-2-light-1 u-radius u-btn-2">Надіслати</button>
                                     </div>
-                                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has
-                                        been sent.
+
+                                    <div id="modal-success" class="modal" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close-button" id="close-success">&times;</span>
+                                            <p style="color: #0f0f0f">Лист успішно надіслано!</p>
+                                        </div>
                                     </div>
-                                    <div class="u-form-send-error u-form-send-message"> Unable to send your message.
-                                        Please fix errors then try again.
+
+                                    <div id="modal-error" class="modal" style="display: none;">
+                                        <div class="modal-content">
+                                            <span class="close-button" id="close-error">&times;</span>
+                                            <p style="color: #0f0f0f">Не вдалося надіслати лист. Спробуйте ще раз.</p>
+                                        </div>
                                     </div>
-                                    <input type="hidden" value="" name="recaptchaResponse" wfd-id="id596">
-                                    <input type="hidden" name="formServices"
-                                           value="7e27a9d4-acd6-9282-6d5b-8b8e5db1ed81">
                                 </form>
+
+                                <script type="text/javascript">
+                                    document.getElementById('sendButton').addEventListener('click', function (e) {
+                                        e.preventDefault();
+
+                                        const form = document.getElementById('contact-form');
+                                        const formData = new FormData(form);
+
+                                        const serviceID = 'service_9qe32co';
+                                        const templateID = 'template_8xg26lc';
+                                        const publicKey = 'z7A8pfohmitLVyYVa';
+
+                                        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({
+                                                service_id: serviceID,
+                                                template_id: templateID,
+                                                user_id: publicKey,
+                                                template_params: {
+                                                    from_name: formData.get('name'),
+                                                    from_email: formData.get('email'),
+                                                    phone: formData.get('phone'),
+                                                    message: formData.get('message'),
+                                                },
+                                            }),
+                                        })
+                                            .then((response) => {
+                                                if (response.ok) {
+                                                    showModal('modal-success');
+                                                    form.reset();
+                                                } else {
+                                                    throw new Error('Помилка при надсиланні листа');
+                                                }
+                                            })
+                                            .catch((error) => {
+                                                console.error('Error:', error);
+                                                showModal('modal-error');
+                                            });
+                                    });
+
+                                    function showModal(modalID) {
+                                        const modal = document.getElementById(modalID);
+                                        modal.style.display = 'flex';
+
+                                        const closeButton = modal.querySelector('.close-button');
+                                        closeButton.addEventListener('click', () => {
+                                            modal.style.display = 'none';
+                                        });
+
+                                        window.addEventListener('click', (event) => {
+                                            if (event.target === modal) {
+                                                modal.style.display = 'none';
+                                            }
+                                        });
+                                    }
+
+
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -337,9 +427,8 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
 </footer>
 <section class="u-backlink u-clearfix u-grey-80">
     <p class="u-text">
-        <span>Track</span>
-        <a class="u-link" href="/plane-tracking" target="_blank" rel="nofollow">
-            <span>Track</span>
+        <span>DRK Team 2024</span>
+
         </a>
     </p>
 </section>
