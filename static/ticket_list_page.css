@@ -372,7 +372,7 @@
 
 
  .u-section-1 {
-  background-image: url("http://localhost:3000/flights-tickets.jpeg");
+  background-image: url("/flights-tickets.png");
   background-position: 50% 50%;
 }
 
