@@ -4,6 +4,7 @@ const fsInstance = require('fs');
 const { PATHNAME_TO_FILEPATH, NOT_FOUND_FILEPATH } = require('./routes')
 const { STATIC_CONTENT_FOLDER, IMAGE_FOLDER } = require('./constants')
 const AVAILABLE_IMAGE_EXTENSIONS = require('./image-extensions')
+require('dotenv').config();
 
 const handleRequest = (req, res) => {
 
@@ -28,14 +29,14 @@ const handleHTMLRequest = (req, res) => {
     res.writeHead(httpStatusInstance.StatusCodes.OK, {
         "Content-Type": "text/html"
     });
-    
+
     const basePath = new URL(req.url, `http://${req.headers.host}`).pathname;
     const responseFilepath = PATHNAME_TO_FILEPATH.get(basePath);
 
     if (responseFilepath) {
-        readFile(responseFilepath, res);
+        readFile(responseFilepath, res, true);
     } else {
-        readFile(NOT_FOUND_FILEPATH, res);
+        readFile(NOT_FOUND_FILEPATH, res, true);
     }
 }
 
@@ -44,7 +45,7 @@ const handleJsFilesRequest = (req, res) => {
         "Content-Type": "application/javascript"
     });
 
-    readFile(path.join(STATIC_CONTENT_FOLDER, req.url), res)
+    readFile(path.join(STATIC_CONTENT_FOLDER, req.url), res, true)
 }
 
 const handleCssFileRequest = (req, res) => {
@@ -52,7 +53,7 @@ const handleCssFileRequest = (req, res) => {
         "Content-Type": "text/css"
     });
 
-    readFile(path.join(STATIC_CONTENT_FOLDER, req.url), res)
+    readFile(path.join(STATIC_CONTENT_FOLDER, req.url), res, true)
 }
 
 const handleImageRequest = (req, res) => {
@@ -79,19 +80,23 @@ const handleImageRequest = (req, res) => {
         });
     }
 
-    readFile(path.join(IMAGE_FOLDER, req.url), res)
+    readFile(path.join(IMAGE_FOLDER, req.url), res, false)
 }
 
 
-const readFile = (filePath, res) => {
+const readFile = (filePath, res, isText) => {
     fsInstance.readFile(filePath, (error, data) => {
         if (error) {
             console.error(error);
             handleError(res);
             return;
         }
+        if (isText) {
+            res.write(data.toString().replace('%BASE_API%', process.env.BASE_API));
+        } else {
+            res.write(data)
+        }
 
-        res.write(data);
         res.end();
     });
 };
