@@ -17,6 +17,11 @@ const notFoundHTML = `<div style="width: 100%; height: 100%; display: flex; just
 let walletInfo = null;
 
 $(document).ready(() => {
+    handleProfileHREF()
+    initialFlightLoadData()
+})
+
+const handleProfileHREF = () => {
     const token = localStorage.getItem('authToken');
     const profileHref = $('#profile-href');
 
@@ -25,9 +30,7 @@ $(document).ready(() => {
     } else {
         profileHref.attr('href', '/login');
     }
-
-    initialFlightLoadData()
-})
+}
 
 const initialFlightLoadData = () => {
     if (fromId && toId && date) {
@@ -40,19 +43,34 @@ const initialFlightLoadData = () => {
             departDate: formattedDate,
             pageNo: 1,
             adults: 1,
-            children: '',
-            sort: '',
-            cabinClass: '',
             currencyCode: 'USD'
         }
-        requestFlights(requestBody, renderFlights)
+        requestFlights(requestBody, flightsBlocks)
     } else {
         $('#flights-container').append(notFoundHTML)
     }
 
     const applyFilterButton = $('#apply-filter-submit-button')
+    const ticketsWithStopsButton = $('#tickets-with-stops')
+
     applyFilterButton.on('click', () => {
         applyFilters()
+    })
+
+    ticketsWithStopsButton.on('click', () => {
+        const fromId = departureAirportInput.attr('data-id');
+        const toId = arrivalAirportInput.attr('data-id');
+        const date = travelDateInput.val();
+        console.log({
+            fromId,
+            toId,
+            date
+        })
+        if (fromId && toId && date) {
+            window.open(`${window.location.origin}/tickets-stops?from=${fromId}&to=${toId}&date=${date}`, '_blank');
+        } else {
+            alert('Неможливо отримати дані про пересадки')
+        }
     })
 }
 
@@ -64,11 +82,15 @@ const requestFlights = (requestBody, callback) => {
         contentType: 'application/json',
         success: (response) => {
             console.log("Success: ", response.data)
-            callback(response.data)
+            if (response.data && response.data !== undefined) {
+                callback(response.data)
+            } else {
+                $('#flights-container').empty().append(notFoundHTML)
+            }
         },
         error: (error) => {
-
-            console.log('Error:', error);
+            $('#flights-container').empty().append(notFoundHTML)
+            console.log(error)
         }
     });
 }
@@ -78,21 +100,31 @@ const applyFilters = () => {
     const children = $('#children')
     const travelClass = $('#class')
     const sortOption = $('#sort')
-    const filterObject = {
+    let filterObject = {
         fromId: departureAirportInput.attr('data-id'),
         toId: arrivalAirportInput.attr('data-id'),
         departDate: travelDateInput.val(),
         adults: Number(adults.val()),
-        children: '17,'.repeat(Number(children.val())).slice(0, -1),
-        sort: sortOption.val(),
-        cabinClass: travelClass.val(),
         currenyCode: 'USD'
+    };
+
+    if (children.val() !== '0' && children.val() !== '') {
+        filterObject.children = '17,'.repeat(Number(children.val())).slice(0, -1);
     }
-    console.log(filterObject)
-    requestFlights(filterObject, renderFlights)
+
+    if (sortOption.val() !== 'NOT_INCLUDE' || travelClass.val() !== 'ANY') {
+        if (sortOption.val() !== 'NOT_INCLUDE') {
+            filterObject.sort = sortOption.val();
+        }
+        if (travelClass.val() !== 'ANY') {
+            filterObject.cabinClass = travelClass.val();
+        }
+    }
+
+    requestFlights(filterObject, flightsBlocks)
 }
 
-const renderFlights = (flights) => {
+const flightsBlocks = (flights) => {
     const container = $('#flights-container');
     const fromPlaceholder = $('#from-placeholder')
     const toPlaceholder = $('#to-placeholder')

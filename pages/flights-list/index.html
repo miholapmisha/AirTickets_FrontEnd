@@ -98,55 +98,58 @@
     
   </div>
     <div class="main-conteiner">
-      <div class="filter-container">
-          <div class="filter-group">
-            <label for="adults">Дорослі:</label>
-            <select id="adults" name="adults">
-              <option value="0">0</option>
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-      
-          <div class="filter-group">
-            <label for="children">Діти:</label>
-            <select id="children" name="children">
-              <option value="0" selected>0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-      
-          <div class="filter-group">
-            <label for="class">Клас:</label>
-            <select id="class" name="class">
-              <option value="ANY" selected>Будь який</option>
-              <option value="ECONOMY">Економ</option>
-              <option value="PREMIUM_ECONOMY">Преміум економ</option>
-              <option value="BUSINESS">Бізнес</option>
-              <option value="FIRST">Перший клас</option>
-            </select>
-          </div>
+      <div class="left-sidebar">
+        <div class="filter-container">
+            <div class="filter-group">
+              <label for="adults">Дорослі:</label>
+              <select id="adults" name="adults">
+                <option value="0">0</option>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+        
+            <div class="filter-group">
+              <label for="children">Діти:</label>
+              <select id="children" name="children">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+        
+            <div class="filter-group">
+              <label for="class">Клас:</label>
+              <select id="class" name="class">
+                <option value="ANY" selected>Будь який</option>
+                <option value="ECONOMY">Економ</option>
+                <option value="PREMIUM_ECONOMY">Преміум економ</option>
+                <option value="BUSINESS">Бізнес</option>
+                <option value="FIRST">Перший клас</option>
+              </select>
+            </div>
 
-          <div class="filter-group">
-            <label for="sort">Сортувати за:</label>
-            <select id="sort" name="class">
-              <option value="FASTEST">Найшвидші</option>
-              <option value="CHEAPEST">Найдешевші</option>
-              <option value="BEST">Найкращі</option>
-              <option value="NOT_INCLUDE" selected>Не сортувати</option>
-            </select>
-          </div>
-    
-          <div class="filter-group">
-            <button id="apply-filter-submit-button" type="submit" class="filter-submit-btn">Оновити</button>
-          </div>
+            <div class="filter-group">
+              <label for="sort">Сортувати за:</label>
+              <select id="sort" name="class">
+                <option value="FASTEST">Найшвидші</option>
+                <option value="CHEAPEST">Найдешевші</option>
+                <option value="BEST">Найкращі</option>
+                <option value="NOT_INCLUDE" selected>Не сортувати</option>
+              </select>
+            </div>
+      
+            <div class="filter-group">
+              <button id="apply-filter-submit-button" type="submit" class="filter-submit-btn">Оновити</button>
+            </div>
+        </div>
+        <button id="tickets-with-stops" class="tickets-stops-button">Квитки з пересадками</button>
       </div>
       
       <div id="flights-container">

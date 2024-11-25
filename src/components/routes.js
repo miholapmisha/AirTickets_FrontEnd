@@ -10,7 +10,8 @@ const PATHNAME_TO_FILEPATH = new Map([
     ['/complete-registration', path.join(PAGE_FOLDER, '/complete-registration/index.html')],
     ['/plane-tracking', path.join(PAGE_FOLDER, '/tracking-page/index.html')],
     ['/ticket', path.join(PAGE_FOLDER, '/ticket-page/index.html')],
-    ['/profile', path.join(PAGE_FOLDER, '/user-page/index.html')]
+    ['/profile', path.join(PAGE_FOLDER, '/user-page/index.html')],
+    ['/tickets-stops', path.join(PAGE_FOLDER, '/tickets-with-stops-page/index.html')]
 ]);
 const NOT_FOUND_FILEPATH = path.join(PAGE_FOLDER, '/404/index.html');
 

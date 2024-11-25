@@ -1,6 +1,5 @@
 #flights-container {
   display: flex;
-  min-width: ;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -11,11 +10,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
+  width: 1150px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   background-color: #fff;
   transition: transform 0.2s, box-shadow 0.2s;
 }

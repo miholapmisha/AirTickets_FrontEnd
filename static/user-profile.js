@@ -148,12 +148,12 @@ const renderFlights = (flights) => {
         const {
             flightToken,
             segments: {
-                forward: { from: forwardFrom, to: forwardTo },
+                forward: { from: forwardFrom, to: forwardTo, carrier: forwardCarrier },
                 backward
             },
             price: { total, currency }
         } = flight;
-        
+
         let backwardSegmentHTML = '';
         let backwardDuration = '';
         const forwardDuration = calculateDuration(forwardFrom.departueDate, forwardTo.arrivalDate);
@@ -187,6 +187,9 @@ const renderFlights = (flights) => {
                     <h5>Duration: <strong>${forwardDuration}</strong></h5>
                 </div>
                 ${backwardSegmentHTML}
+                <div class="carrier-logo">
+                    <img src="${forwardCarrier.airline.logoImg}" alt="${forwardCarrier.airline.name}" title="${forwardCarrier.airline.name}" />
+                </div>
                 <div class="price">
                     <p>Ціна: <strong>${total} ${currency}</strong></p>
                     <button class="track">Відслідкувати</button>
@@ -197,9 +200,110 @@ const renderFlights = (flights) => {
         const flightBlock = $($.parseHTML(flightBlockHTML));
 
         flightBlock.find('.track').on('click', () => {
-            console.log(`Tracking flight: ${flightToken}`);
-            window.open(`${window.location.origin}/plane-tracking?flightToken=${flightToken}`);
+            const exampleResponse = {
+                data: {
+                    flightStatus: "active",
+                    departure: {
+                        airport: "San Francisco International",
+                        scheduled: "2019-12-12T04:20:00+00:00",
+                        estimated: "2019-12-12T04:20:00+00:00",
+                    },
+                    arrival: {
+                        airport: "Dallas/Fort Worth International",
+                        scheduled: "2019-12-12T04:20:00+00:00",
+                        estimated: "2019-12-12T04:20:00+00:00",
+                    },
+                    live: {
+                        latitude: 36.2856,
+                        longitude: -106.807,
+                        altitude: 8846.82,
+                        speed_horizontal: 894.348,
+                        speed_vertical: 1.188,
+                    },
+                },
+            };
+            const exampleResponseScheduled = {
+                data: {
+                    flightStatus: "scheduled",
+                    departure: {
+                        airport: "John F. Kennedy International",
+                        scheduled: "2024-11-30T14:00:00+00:00",
+                        estimated: "2024-11-30T14:10:00+00:00",
+                    },
+                    arrival: {
+                        airport: "Heathrow Airport",
+                        scheduled: "2024-11-30T20:30:00+00:00",
+                        estimated: "2024-11-30T20:40:00+00:00",
+                    },
+                },
+            };
+            const exampleResponseNone = {
+                data: {
+                    flightStatus: "none",
+                },
+            };
+            // handleFlightResponse(exampleResponse)
+            requestFlightTrackingData(flight, (response) => {
+                console.log("Track result: ", response)
+                handleFlightResponse(response)
+            })
         });
         container.append(flightBlock);
     });
+};
+
+const requestFlightTrackingData = (flightData, callback) => {
+
+    const query = {
+        flight_iata: `${flightData.segments.forward.carrier.code}${flightData.segments.forward.carrier.number}`,
+        dep_iata: flightData.segments.forward.from.airportCode,
+        arr_iata: flightData.segments.forward.to.airportCode
+    };
+
+    $.ajax({
+        url: `${BASE_ENDPOINT}/flights/trackFlight`,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(query),
+        success: (response) => {
+            callback(response)
+        },
+        error: (xhr, status, error) => {
+            console.error('Error fetching flight tracking data:', status, error);
+        }
+    });
+};
+
+const handleFlightResponse = (response) => {
+    const flightData = response.data;
+
+    if (!flightData || !flightData.flightStatus) {
+        alert("Інформація відсутня");
+        return;
+    }
+
+    const { flightStatus, departure, arrival, live } = flightData;
+
+    if (flightStatus === "active" && live) {
+
+        const { latitude, longitude } = live;
+        const departureAirport = departure?.airport || "Unknown";
+        const arrivalAirport = arrival?.airport || "Unknown";
+
+        const queryParams = new URLSearchParams({
+            latitude,
+            longitude,
+            departureAirport,
+            arrivalAirport,
+        }).toString();
+
+        const newTabURL = `${window.location.origin}/plane-tracking?${queryParams}`;
+        window.open(newTabURL, "_blank");
+    } else if (flightStatus === "scheduled") {
+        alert("Рейс запланований, але ще не вилетів.");
+    } else if (flightStatus === "none") {
+        alert("Дані про рейс наразі недоступні (Можливо політ завершився).");
+    } else {
+        alert("Unexpected flight status.");
+    }
 };
